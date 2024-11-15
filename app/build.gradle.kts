@@ -6,14 +6,15 @@ plugins {
 
 android {
     namespace = "com.asherpope.ccc_av_team_android"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.asherpope.ccc_av_team_android"
         minSdk = 30
-        targetSdk = 34
+        //noinspection EditedTargetSdkVersion
+        targetSdk = 35
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
