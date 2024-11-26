@@ -224,3 +224,6 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/android,androidstudio,kotlin,gradle
+
+# User files
+app/src/main/java/com/asherpope/ccc_av_team_android/network/Auth.kt
