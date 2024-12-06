@@ -6,6 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import com.asherpope.ccc_av_team_android.data.images.AVImage
+import com.asherpope.ccc_av_team_android.network.AirtableRecord
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -23,11 +26,11 @@ class DataManager(private val context: Context) {
     }
 
     // Generic save function for serializable objects
-    inline fun <reified T> saveToDisk(obj: T, table: TableName) {
+    inline fun <T> saveToDisk(obj: T, table: TableName, serializer: KSerializer<T>) {
         val filename = "${table.name}.json"
         val file = File(getDocumentsDirectory(), filename)
         try {
-            val jsonString = json.encodeToString(obj)
+            val jsonString = json.encodeToString(serializer, obj)
             file.writeText(jsonString)
         } catch (e: Exception) {
             Log.e("DataManager", "Failed to save $filename: ${e.message}")

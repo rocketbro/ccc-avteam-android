@@ -1,14 +1,21 @@
 package com.asherpope.ccc_av_team_android.data
 
+import com.asherpope.ccc_av_team_android.network.AirtableRecord
+import kotlinx.serialization.Serializable
+import java.util.Date
+import java.util.UUID
+
+@Serializable
 data class AVCategory(
-    val id: String,
-    val createdTime: String,
-    val fields: Fields
-) {
+    override val id: String = UUID.randomUUID().toString(),
+    val createdTime: String = Date().toString(),
+    val fields: Fields = Fields()
+): Identifiable, AirtableRecord {
+    @Serializable
     data class Fields(
-        val workflows: List<String>?,
-        val quickFixes: List<String>?,
-        val description: String?,
-        val name: String
+        val workflows: List<String>? = null,
+        val quickFixes: List<String>? = null,
+        val description: String? = null,
+        val name: String = ""
     )
 }
